@@ -1,0 +1,55 @@
+{
+   "albums": [
+      {
+         "albumName": "Four",
+         "id": "Four",
+         "type": "album",
+         "artistName": "One Direction",
+         "numberOfSongs": "10",
+         "songs": [
+            {
+               "songName": "Night Changes",
+               "duration": "04:00"
+            },
+            {
+               "songName": "Steal My Girl",
+               "duration": "03:48"
+            },
+            {
+               "songName": "18",
+               "duration": "04:08"
+            },
+            {
+               "songName": "Ready To Run",
+               "duration": "03:16"
+            },
+            {
+               "songName": "No Control",
+               "duration": "03:19"
+            },
+            {
+               "songName": "Once In A Lifetime",
+               "duration": "02:38"
+            },
+            {
+               "songName": "Stockholm Syndrome",
+               "duration": "03:34"
+            },
+            {
+               "songName": "Fireproof",
+               "duration": ""
+            },
+            {
+               "songName": "Act My Age ",
+               "duration": "03:18"
+            },
+            {
+               "songName": "Where Do Broken Hearts Go",
+               "duration": "03:49"
+            }
+         ]
+      }, {
+         "albumName": "Made In The AM"
+      }
+   ]
+}

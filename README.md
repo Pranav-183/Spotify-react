@@ -1,5 +1,6 @@
-# Clone the Repository
+# Starter
 
+Clone the Repository
 Run npm install
 
 # Getting Started with Create React App

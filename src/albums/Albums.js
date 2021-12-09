@@ -1,8 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
 const Albums = () => {
-   const navigate = useNavigate()
-
    return (
       <div className="rightSide">
          <li className="album">Four</li>

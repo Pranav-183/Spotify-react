@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Varela&display=swap');
 
+/* ALL */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,6 +10,7 @@
 .all {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .sides {
@@ -20,8 +23,18 @@
   width: 227px;
   background-color: #000;
   color: #b3b3b3;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
+
+.navbarHR {
+  width: 85%;
+  height: 0.0001%;
+  border-top: 2px solid rgb(80,80,250);
+  margin: 0 auto;
+}
+
+/* NAVBAR OR LEFT SIDE */
+/* Spotify */
 
 .spotify {
   display: flex;
@@ -36,19 +49,97 @@
   margin-left: 5px;
 }
 
-.homeAbout {
-  height: 120px;
+/* homeSearch */
+
+.homeSearch {
+  height: 126px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 10px 0;
 }
 
-.homeAboutElement a {
+.homeSearch li {
+  height: 42px;
+  width: inherit;
+  list-style: none;
+  cursor: pointer;
+}
+
+.homeSearch li:hover {
+  background-color: #2A2A2A;
+}
+
+.homeSearchElement {
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
+  font-size: 1.3rem;
+}
+
+.homeSearchIconText {
+  margin-left: 10px;
+  font-size: 1.3rem;
+}
+
+.homeSearchElement a {
   color: #b3b3b3;
+  text-decoration: none;
 }
 
-.rightSide {
-  width: 1309px;
-  height: 690px;
-  overflow-y: scroll;
+/* DROPS */
+
+.albumDrop, .playlistDrop {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
 }
+
+.albumDrop i, .playlistDrop i {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.albumDrop a, .playlistDrop a {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Albums */
+
+.albums, .playlists {
+  height: 40px;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.albumList, .playlistList {
+  display: none;
+}
+
+.album, .playlist {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+  height: 28px;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.album:hover, .playlist:hover {
+  background-color: #2A2A2A;
+}
+
+.album a, .playlist a {
+  color: white;
+  text-decoration: none;
+}
+
+/* HEADER */
 
 .header {
   display: flex;
@@ -78,52 +169,185 @@
   font-size: 19px;
 }
 
+/* RIGHT SIDE */
+/* COMMON */
+
+.rightSide {
+  width: 1309px;
+  height: 690px;
+  overflow-y: auto;
+}
+
 .topRight {
-  height: 277px;
+  background-color: #1a1a1a;
   padding-top: 50px;
+  height: 280px;
   display: flex;
-  flex-direction: row;
-}
-
-.FourTopRight {
-  background: linear-gradient(to right, rgb(83,83,83), rgb(0,0,0));
-}
-
-.MadeInTopRight {
-  background: linear-gradient(to bottom, rgb(255, 73, 1), rgb(0, 0, 0));
-}
-
-.albumImg {
-  margin: auto 0 10px 20px;
-}
-
-.albumImg img {
-  width: 230px;
-}
-
-.albumText {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  margin: auto 0 100px 15px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.albumText :nth-child(1) {
-  font-size: 16px;
-}
-
-.albumText :nth-child(2) {
-  font-size: 80px;
-}
-
-.albumText :nth-child(3) {
-  font-size: 18px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .bottomRight {
-  height: 650px;
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
+  color: white;
+  font-family: 'Varela Round', sans-serif;
+}
+
+/* TOP RIGHT */
+
+.topRight img {
+  width: 232px;
+  height: 232px;
+  border-radius: 5px;
+  margin: 25px 0 0 20px;
+}
+
+.FourTopRight {
+  background: linear-gradient(to bottom, rgb(83,83,83), rgb(0,0,0));
+}
+
+.MadeInTheAMTopRight {
+  background: linear-gradient(to bottom, rgb(255, 102, 0), rgb(0, 0, 0));
+}
+
+.MidnightMemoriesTopRight {
+  background: linear-gradient(to bottom, rgb(218, 22, 22), rgb(0, 0, 0) );
+}
+
+.TakeMeHomeTopRight {
+  background: linear-gradient(to bottom, rgb(67, 9, 204), rgb(0, 0, 0));
+}
+
+.UpAllNightTopRight {
+  background: linear-gradient(to bottom, rgb(200, 0, 0), rgb(0, 0, 0));
+}
+
+.topRightInfo {
+  color: white;
+  margin-left: 40px;
+  padding-top: 105px;
+}
+
+.FirstLine {
+  font-size: 0.95rem;
+}
+
+.SecondLine {
+  margin-top: 5px;
+  font-size: 4.5rem;
+}
+
+.ThirdLine {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Varela Round', sans-serif;
+  color: #fff;
+  margin-top: 5px;
+}
+
+.ThirdLine h3 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.ThirdLine h3 a:hover {
+  text-decoration: underline;
+}
+
+.ThirdLine h5 {
+  font-size: 0.9rem;
+  margin-top: 3px;
+}
+
+/* MIDDLE RIGHT */
+
+
+
+/* BOTTOM RIGHT */
+
+.songTitles {
+  color: #b3b3b3;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.titleHash {
+  margin-left: 60px;
+  margin-right: 50px;
+}
+
+.titleDuration {
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.songItem {
+  height: 60px;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.songItem:hover {
+  background-color: #3a3a3a;
+}
+.songItem:hover .favoriteIcon {
+  display: block;
+}
+.songItem:hover .songDuration {
+  margin-left: 50px;
+}
+.songItem:hover .songNumber {
+  display: none;
+}
+.songItem:hover .plauseIcon {
+  display: block;
+  margin-left: -7px;
+  margin-right: -8px;
+  color: #c9c9c9;
+}
+@keyframes greyToWhite {
+  0% {color:#c9c9c9;}
+  100% {color: white;}
+}
+.songItem:hover .plauseIcon:hover {
+  animation: greyToWhite 0.3s;
+  color: #fff;
+}
+
+.songNumberOrIcon {
+  margin-left: 60px;
+  margin-right: 46px;
+  color: #b3b3b3;
+}
+
+.favoriteIcon {
+  margin-left: auto;
+  display: none;
+}
+
+.favoriteIcon i {
+  cursor: default;
+  color: #b3b3b3;
+  transition: color 0.2s ease;
+}
+
+.favoriteIcon i:hover {
+  color: rgb(0, 180, 0);
+}
+
+.songDuration {
+  margin-left: auto;
+  margin-right: 43px;
+}
+
+.plauseIcon, .playingGif {
+  display: none;
+  cursor: default;
+  color: #b3b3b3;
+  transition: color 0.5s ease;
 }
 
 .spotify-logo {
@@ -156,6 +380,8 @@
 .rightSide::-webkit-scrollbar-button {
   display: none;
 }
+
+/* BOTTOM BAR */
 
 .bottomBar {
   height: 100px;

@@ -6,8 +6,8 @@ import Header from "./Header";
 import Home from "./home/Home";
 import Search from "./search/Search";
 import Library from "./library/Library";
-import Albums from "./albums/Albums"
 import Album from "./albums/Album";
+import Albums from "./albums/Albums";
 
 const App = () => {
   return (
@@ -23,9 +23,8 @@ const App = () => {
           <div className="rightSide">
             <Header />
             <Routes>
-              <Route path="albums" element={<Albums />}>
-                <Route path=":id" element={<Album />} />
-              </Route>
+              <Route path="/albums" element={<Albums />} />
+              <Route path="/albums/:name" element={<Album />} />
             </Routes>
           </div>
         </div>

@@ -1,7 +1,19 @@
 {
+   "profiles": [
+      {
+         "username": "Pranav",
+         "password": "Password",
+         "id": "1"
+      },
+      {
+         "username": "Vidhyuth",
+         "password": "coderdoor",
+         "id": "2"
+      }
+   ],
    "albums": [
       {
-         "albumName": "Four",
+         "Name": "Four",
          "id": "Four",
          "type": "album",
          "artistName": "One Direction",
@@ -14,7 +26,7 @@
                "id": "1"
             },
             {
-               "songName": "Steal",
+               "songName": "Steal My Girl",  
                "duration": "03:48",
                "id": "2"
             },
@@ -49,7 +61,7 @@
                "id": "8"
             },
             {
-               "songName": "Act My Age ",
+               "songName": "Act My Age",
                "duration": "03:18",
                "id": "9"
             },
@@ -61,7 +73,7 @@
          ]
       }, 
       {
-         "albumName": "Made In The A.M.",
+         "Name": "Made In The AM",
          "id": "Made In The AM",
          "type": "album",
          "artistName":"One Direction",
@@ -141,7 +153,7 @@
          ]
       },
       {
-         "albumName": "Midnight Memories",
+         "Name": "Midnight Memories",
          "id": "Midnight Memories",
          "type": "album",
          "artistName":"One Direction",
@@ -186,7 +198,7 @@
          ]
       },
       {
-         "albumName": "Take Me Home",
+         "Name": "Take Me Home",
          "id": "Take Me Home",
          "type": "album",
          "artistName":"One Direction",
@@ -246,7 +258,7 @@
          ]
       },
       {
-         "albumName": "Up All Night",
+         "Name": "Up All Night",
          "id": "Up All Night",
          "type": "album",
          "artistName":"One Direction",
@@ -284,7 +296,7 @@
                "id": "6"
             },
             {
-               "songName": "I want",
+               "songName": "I Want",
                "duration": "02:51",
                "id": "7"
             },

@@ -9,6 +9,7 @@ const FavoriteClick = (e) => {
       e.target.innerText = 'favorite_border'
       e.target.style.color = null
    }
+   
    if (favoriteIconClicked === false) {
       e.target.parentElement.parentElement.addEventListener('mouseover', () => {
          e.target.parentElement.parentElement.lastElementChild.style.marginLeft = '50px'

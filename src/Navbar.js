@@ -1,4 +1,3 @@
-import spotifyLogo from "./Spotify Logo.png"
 import 'material-icons/iconfont/material-icons.css'
 import { Link } from "react-router-dom"
 
@@ -49,7 +48,7 @@ const Navbar = () => {
    return (
       <nav className="navbar">
          <div className="spotify">
-            <img src={spotifyLogo} alt="Spotify Logo" className="spotify-logo" />
+            <img src={"/images/Spotify Logo.png"} alt="Spotify Logo" className="spotify-logo" />
             <span className="spotifyText">Spotify</span>
          </div>
          <ul className="homeSearch">

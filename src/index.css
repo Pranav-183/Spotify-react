@@ -149,7 +149,8 @@
   position: fixed;
   background-color: rgba(0,0,0,0);
   color: white;
-  width: 1230px;
+  width: 81.95vw;
+  height: 47px;
   font-family: 'Varela Round', sans-serif;
 }
 
@@ -164,9 +165,96 @@
   margin: 5px;
 }
 
+.signupLogin {
+  padding: 10px;
+  display: flex;
+}
+
+.signup button {
+  background-color: orange;
+  cursor: pointer;
+  padding: 7px;
+  border-radius: 20px;
+  border: .1px solid white;
+}
+.signup button:hover {
+  background-color: rgb(255, 145, 0);
+}
+
+.signup button a {
+  color: black;
+  text-decoration: none;
+}
+
+.login button {
+  background-color: inherit;
+  margin-left: 8px;
+  cursor: pointer;
+  padding: 7px;
+  border-radius: 20px;
+  border: .1px solid orange;
+  color: orange;
+}
+.login button:hover {
+  background-color: rgba(255, 153, 0, 0.767);
+  color: black;
+  border: .1px solid white;
+}
+
+.login button a {
+  color: orange;
+  text-decoration: none;
+}
+
 .time {
   margin-left: auto;
   font-size: 19px;
+}
+
+/* HOME */
+
+.homepage {
+  height: 588px;
+  background-color: #1a1a1a;
+  color: white;
+  padding-top: 102px;
+  padding-left: 20px;
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.hpAlbumList {
+  list-style: none;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.hpAlbum {
+  transition: transform .3s;
+}
+
+.hpAlbum:hover {
+  transform: scale(1.1);
+}
+
+.hpAlbumList a{
+  color: white;
+  text-decoration: none;
+}
+
+.hpComponent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 200px;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: #96ccff;
+  box-shadow: 4px 4px 8px 0 rgb(0 0 0 / 20%);
+  border-radius: 0.5rem;
 }
 
 /* RIGHT SIDE */
@@ -381,10 +469,178 @@
   display: none;
 }
 
+/* LOGIN */
+
+.loginComponent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 643px;
+  background-color: rgb(66, 66, 66);
+  color: white;
+  margin-top: 47px;
+  font-family: 'Varela Round',sans-serif;
+}
+
+.logInToSpotifyElement {
+  font-size: 130px;
+  position: absolute;
+  top: 100px;
+  color: rgba(0, 0, 0, 0.13);
+}
+
+#usernameInput, #passwordInput {
+  width: 300px;
+  height: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+#usernameInput {
+  margin-top: 25.6px;
+}
+
+#wrongLogin {
+  margin-bottom: 10px;
+  background-color: red;
+  padding: 5px 15px;
+  font-size: 17px;
+  display: none;
+}
+
+#showpassword {
+  position: relative;
+  top: -33px;
+  left: 140px;
+  background-color: black;
+}
+
+#loginSubmitBtn {
+  margin-top: 10px;
+  padding: 10px;
+  width: 90px;
+  height: 42px;
+  border-radius: 20px;
+  background-color: orange;
+  cursor: pointer;
+}
+
+#loginSubmitBtn:hover {
+  background-color: rgb(255, 145, 0);
+}
+
 /* BOTTOM BAR */
 
-.bottomBar {
-  height: 100px;
+#bottomBar {
+  height: 101px;
   width: 1536px;
   background-color: #2A2A2A;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: row;
+}
+
+/* SONG INFO */
+
+#songInfo {
+  width: 28vw;
+  display: flex;
+  flex-direction: row;
+}
+
+#songInfoImg {
+  margin: 8px 0 0 10px;
+  border: 1px solid blue;
+  height: 82px;
+  width: 82px;
+}
+
+#songInfoImg img {
+  width: 82px;
+  height: 82.15px;
+}
+
+#songInfoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: white;
+  padding: 20px 0 0 15px;
+  cursor: default;
+}
+
+#songInfoSongName {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+#songInfoSongArtist {
+  font-size: 14px;
+}
+
+#songInfoSongArtist:hover {
+  text-decoration: underline;
+}
+
+/* CONTROLS */
+
+#controls {
+  width: 45vw;
+  height: 101px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #b3b3b3;
+}
+
+#seekbar {
+  width: 500px;
+  height: 7px;
+  margin-bottom: 10px;
+}
+
+#mainPlause {
+  cursor: default;
+  font-size: 40px;
+  position: relative;
+  margin: 0 5px 5px 5px;
+  color: white;
+}
+
+#mainPlause:hover {
+  font-size: 43px;
+  margin: 0 3.3px 2.5px 3.3px;
+}
+
+#shuffle, #previous, #next, #repeat {
+  margin: 0 5px;
+  cursor: default;
+  transition: color 0.1s ease-in;
+}
+
+#shuffle:hover, #previous:hover, #next:hover, #repeat:hover {
+  color: white;
+}
+
+/* EXTRAS */  
+
+#extras {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 27vw;
+  color: white;
 }

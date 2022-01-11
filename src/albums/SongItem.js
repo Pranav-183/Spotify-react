@@ -5,10 +5,10 @@ import PlauseClick from '../PlauseFunctions';
 class SongItem extends Component {render() {
       return (
          <>
-            {this.props.songs.map((song) => (
-               <div className="songItem" key={song.id} id={song.id}>
+            {this.props.albumSongs.map((song) => (
+               <div className="songItem" key={song.id+1} id={song.id+1}>
                   <div className="songNumberOrIcon">
-                     <span className="songNumber">{song.id}</span>
+                     <span className="songNumber">{song.id+1}</span>
                      <span className="plauseIcon"><i className="material-icons" onClick={PlauseClick}>play_arrow</i></span>
                      <span className="playingGif"><img src={`/images/playing.gif`} width="40px" alt="playingGif"></img></span>
                   </div>

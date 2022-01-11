@@ -1,11 +1,11 @@
-import { albumName, songArtist, songName, mainPlause, next, previous } from "./PlauseFunctions";
+import { songPlaybum, songArtist, songName, mainPlause, next, previous } from "./PlauseFunctions";
 
 const BottomBar = () => {
       return (
       <div id="bottomBar">
          <div id="songInfo">
             <span id="songInfoImg">
-               <img src={`/images/${albumName}.jpg`} alt="songInfoImg" />
+               <img src={`/images/${songPlaybum}.jpg`} alt="songInfoImg" />
             </span>
             <span id="songInfoText">
                <span id="songInfoSongName">{songName}</span>

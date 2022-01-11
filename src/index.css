@@ -147,7 +147,7 @@
   align-items: center;
   padding: 5px 25px;
   position: fixed;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0,0,0,0.2);
   color: white;
   width: 81.95vw;
   height: 47px;
@@ -360,12 +360,10 @@
   padding-bottom: 10px;
   padding-top: 20px;
 }
-
 .titleHash {
   margin-left: 60px;
   margin-right: 50px;
 }
-
 .titleDuration {
   margin-left: auto;
   margin-right: 50px;
@@ -375,59 +373,52 @@
   height: 60px;
   width: inherit;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  flex-direction: row;
 }
 .songItem:hover {
   background-color: #3a3a3a;
 }
 .songItem:hover .favoriteIcon {
-  display: block;
+  visibility: visible;
 }
-.songItem:hover .songDuration {
-  margin-left: 50px;
+.songItem:hover .songNumberOrIcon {
+  margin-left: 55px;
+  margin-right: 35px;
 }
 .songItem:hover .songNumber {
   display: none;
 }
 .songItem:hover .plauseIcon {
   display: block;
-  margin-left: -7px;
-  margin-right: -8px;
   color: #c9c9c9;
-}
-@keyframes greyToWhite {
-  0% {color:#c9c9c9;}
-  100% {color: white;}
+  transition: color 0.3s;
 }
 .songItem:hover .plauseIcon:hover {
-  animation: greyToWhite 0.3s;
   color: #fff;
 }
 
 .songNumberOrIcon {
   margin-left: 60px;
-  margin-right: 46px;
+  margin-right: 45px;
   color: #b3b3b3;
 }
 
 .favoriteIcon {
   margin-left: auto;
-  display: none;
+  margin-right: 50px;
+  visibility: hidden;
 }
-
 .favoriteIcon i {
   cursor: default;
   color: #b3b3b3;
   transition: color 0.2s ease;
 }
-
 .favoriteIcon i:hover {
   color: rgb(0, 180, 0);
 }
 
 .songDuration {
-  margin-left: auto;
   margin-right: 43px;
 }
 
@@ -442,6 +433,8 @@
   height: 50px;
   width: 50px;
 }
+
+/* SCROLLBAR */
 
 .rightSide::-webkit-scrollbar {
   background-color: inherit;

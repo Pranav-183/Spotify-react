@@ -1,29 +1,20 @@
-import { SongList } from './SongList'
-import data from './data/albums.json'
+import SongList from "./SongList";
 
+let songItems
 let songName = localStorage.getItem('Playing Song')
-let albumName = localStorage.getItem('Playing AP')
+let songPlaybum = localStorage.getItem('Playing AP')
 let songArtist = localStorage.getItem('Playing Artist')
-let audioElement = new Audio(`/songs/${songName}.mp3`);
-let songItems;
-let reqdAlbumName = SongList.find(song => song.songName === songName).albumName
-let reqdArtistName = SongList.find(song => song.songName === songName).artistName
-let reqdAlbum = data['albums'].filter(album => album.Name === albumName)[0]['songs']
-let reqdSongNames = []
-reqdAlbum.map(reqdSong => (reqdSongNames.push(reqdSong.songName)))
-let albumIndex = reqdSongNames.indexOf(songName)
-
+let audioElement = new Audio(`/songs/${songName}.mp3`)
+let albumSongs = []
 SongList.forEach((song, i) => {
-   song["id"] = parseInt(i+1)
-   document.onDOMContentLoaded = () => {
-      if (song.songName === songName) {
-         albumName = song.albumName
-         document.getElementById('songInfoImg').children[0].src = `http://localhost:3000/images/${song.albumName}.jpg`
-         document.getElementById('songInfoSongArtist').innerText = song.artistName
-      }
+   if (song.playbum === songPlaybum) {
+      albumSongs.push(song)
+      song.id = parseInt(i)
    }
-});
+})
+let audioIndex = albumSongs.filter(song => song.songName === songName)[0].id
 
+// Local Storage Saving Functions
 const savePlayingSong = (Song) => {
    localStorage.setItem('Playing Song', Song)
 }
@@ -34,7 +25,17 @@ const savePlayingArtist = (Artist) => {
    localStorage.setItem('Playing Artist', Artist)
 }
 
+// Functions MAIN
 function PlauseClick(e) {
+   // Current Album Songs Array
+   let currentAP = localStorage.getItem('Current Screen Album')
+   let currentAlbumSongs = []
+   SongList.forEach(song => {
+      if (song.playbum === currentAP) {
+         currentAlbumSongs.push(song)
+      }
+   })
+
    // Selectors
    let songNumberOrIcon = e.target.parentElement.parentElement;
    let songItem = songNumberOrIcon.parentElement
@@ -44,36 +45,44 @@ function PlauseClick(e) {
    let songInfoSongName = songItem.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].children[0].children[1].children[0]
    let songInfoImg = songInfoSongName.parentElement.parentElement.children[0].children[0]
    let mainPlause = songInfoSongName.parentElement.parentElement.parentElement.children[1].children[0].children[1]
+
    // Player
    if (plauseIcon.innerText === 'play_arrow') {
-      songName = songNumberOrIcon.parentElement.children[1].innerText;
+      songItems = Array.from(document.getElementsByClassName('songItem'))
+      // Update Song Values
+      songName = songNumberOrIcon.parentElement.children[1].innerText
+      songPlaybum = currentAlbumSongs.filter(song => song.songName === songName)[0].playbum
+      songArtist = currentAlbumSongs.filter(song => song.songName === songName)[0].artistName
+      audioIndex = currentAlbumSongs.filter(song => song.songName === songName)[0].id
+
+      // Change Song Info Of Screen
+      audioElement.src = `/songs/${songName}.mp3`
+      songInfoImg.src = `/images/${songPlaybum}.jpg`
+      document.title = `${songName} - ${songArtist}`
       songInfoSongName.innerText = songName
-      SongList.forEach(song => {
-         if (songName === song.songName) {
-            songInfoImg.src = `http://localhost:3000/images/${song.albumName}.jpg`
-            savePlayingSong(song.songName)
-            savePlayingAP(song.albumName)
-            savePlayingArtist(song.artistName)
-            reqdAlbumName = song.albumName
-            reqdAlbum = data['albums'].filter(album => album.Name === reqdAlbumName)[0]['songs']
+      mainPlause.innerText = 'pause_circle_filled'
+
+      songItems.forEach(songItem => {
+         let songNumber = songItem.children[0].children[0]
+         let plauseIconSpan = songItem.children[0].children[1]
+         if (songItem.children[1].innerText === songName) {
+            songNumber.style.display = 'none'
+            plauseIconSpan.style.display = 'block'
+            plauseIconSpan.children[0].innerText = 'pause'
+         } else {
+            songNumber.style.display = null
+            plauseIconSpan.style.display = null
+            plauseIconSpan.children[0].innerText = 'play_arrow'
          }
       })
-      audioElement.src = `/songs/${songName}.mp3`;
+
       audioElement.play()
-      mainPlause.innerText = 'pause_circle_filled'
-      songNumber.style.display = 'none'
-      plauseIconSpan.style.display = 'block'
-      plauseIcon.innerText = 'pause'
-      console.log(reqdAlbum)
-      songNumberOrIcon.parentElement.onmouseover = () => {
-         songNumberOrIcon.style.marginLeft = '60px'
-         songNumberOrIcon.style.marginRight = '46px'
-      }
-      songNumberOrIcon.parentElement.onmouseleave = () => {
-         songNumberOrIcon.style.marginLeft = '53px'
-         songNumberOrIcon.style.marginRight = '38px'
-      }
-      songItems = Array.from(document.getElementsByClassName('songItem'))
+   
+      // Save To Local Storage
+      savePlayingSong(songName)
+      savePlayingAP(songPlaybum)
+      savePlayingArtist(songArtist)
+      
    } else if (plauseIcon.innerText === 'pause') {
       songName = songNumberOrIcon.parentElement.children[1].innerText;
       audioElement.src = `/songs/${songName}.mp3`;
@@ -83,7 +92,7 @@ function PlauseClick(e) {
          plauseIcon.innerText = 'pause'
       }, 100);
    }
-
+   
    // Icon Stuff
    songItems.forEach(songItem => {
       if (songItem.children[1].innerText !== songName) {
@@ -102,45 +111,74 @@ function mainPlause() {
    let mainPlauseBtn = document.getElementById('mainPlause')
    if (mainPlauseBtn.innerText === 'play_circle_filled') {
       mainPlauseBtn.innerText = 'pause_circle_filled'
+      document.title = `${songName} - ${songArtist}`
       audioElement.play()
    } else if (mainPlauseBtn.innerText === 'pause_circle_filled') {
       mainPlauseBtn.innerText = 'play_circle_filled'
+      document.title = `Spotify - Web Player`
       audioElement.pause()
    }
 }
 
+function checkForMultiplePlause() {
+   let songItems = document.querySelectorAll('.songItem')
+   songItems.forEach(songItem => {
+      if (songItem.children[1].innerText !== songName) {
+         songItem.children[0].children[1].children[0].innerText = 'play_arrow'
+         songItem.children[0].children[1].style.display = null
+         songItem.children[0].children[0].style.display = null
+      }
+   })
+}
+
 function next() {
-   let songInfoSongName = document.getElementById('songInfoSongName')
+   // Selectors
+   let songInfoSongName = document.querySelector('#songInfoSongName')
    let mainPlause  = document.getElementById('mainPlause')
-   if (albumIndex < parseInt(reqdSongNames.length-1)) {
-      albumIndex++
+   let songItems = document.querySelectorAll('.songItem')
+
+   // Function
+   if (audioIndex === parseInt(albumSongs.length - 1)) {
+      audioIndex = 0
    } else {
-      albumIndex = 0
+      audioIndex ++
    }
    audioElement.pause()
-   audioElement.src = `/songs/${reqdSongNames[albumIndex]}.mp3`
-   audioElement.play()
+   audioElement.src = `/songs/${albumSongs[audioIndex].songName}.mp3`
+   // songItems[audioIndex].children[0].children[1].style.color = '#00b300'
+   songItems[audioIndex].children[0].children[1].style.display = 'block'
+   songItems[audioIndex].children[0].children[1].children[0].innerText = 'pause'
+   songItems[audioIndex].children[0].children[0].style.display = 'none'
+   songName = albumSongs[audioIndex].songName
+   songInfoSongName.innerText = songName
    mainPlause.innerText = 'pause_circle_filled'
-   songInfoSongName.innerText = reqdSongNames[albumIndex]
-   songName = reqdSongNames[albumIndex]
-   savePlayingSong(reqdSongNames[albumIndex])
-   savePlayingAP(reqdAlbumName)
-   savePlayingArtist(reqdArtistName)
+   audioElement.play()
+   checkForMultiplePlause()
+   
+   // Save to Local Storage
+   savePlayingSong(songName)
 }
 
 function previous() {
+   // Selectors
    let songInfoSongName = document.getElementById('songInfoSongName')
    let mainPlause  = document.getElementById('mainPlause')
-   if (albumIndex > 0) {
-      albumIndex--
+
+   // Function
+   if (audioIndex === 0) {
+      audioIndex = parseInt(albumSongs.length - 1)
    } else {
-      albumIndex = parseInt(reqdSongNames.length-1)
+      audioIndex --
    }
    audioElement.pause()
-   audioElement.src = `/songs/${reqdSongNames[albumIndex]}.mp3`
-   audioElement.play()
+   audioElement.src = `/songs/${albumSongs[audioIndex].songName}.mp3`
+   songName = albumSongs[audioIndex].songName
+   songInfoSongName.innerText = songName
    mainPlause.innerText = 'pause_circle_filled'
-   songInfoSongName.innerText = reqdSongNames[albumIndex]
+   audioElement.play()
+
+   // Save to Local Storage
+   savePlayingSong(songName)
 }
 
 document.addEventListener('keyup', (e) => {
@@ -150,4 +188,4 @@ document.addEventListener('keyup', (e) => {
 })
  
 export default PlauseClick;
-export {songName, songArtist, albumName, audioElement, mainPlause, next, previous}
+export {songName, songArtist, songPlaybum, audioElement, mainPlause, next, previous}
